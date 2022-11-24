@@ -1,0 +1,16 @@
+<h1>All Movies</h1>
+<div>
+  <%= form_with url: movies_path, method: :get, class:"d-flex" do %>
+    <%= text_field_tag :query, 
+        params[:query], 
+        class: "form-control", 
+        placeholder: "Find a movie..." %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+  
+</div>
+<ul>
+  <% @movies.each do |movie| %>
+    <li><%= movie.title %>(<%= movie.year %> by <strong><%= movie.director.first_name %> <%= movie.director.last_name %></strong> ): <%= movie.synopsis %></li>
+  <% end %>
+</ul>
